@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, create_engine, Text
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, create_engine, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -26,8 +26,10 @@ class Item(Base):
     description = Column(String(2000))
     category_id = Column(Integer, ForeignKey('categories.id'))
     user_id = Column(Integer, ForeignKey('users.id'))
+    created_at = Column(DateTime, default=func.now())
     category = relationship(Category)
     user = relationship(User)
+
 
 
 
