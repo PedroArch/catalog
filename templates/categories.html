@@ -2,26 +2,25 @@
 
 {% block content %}
 
-
-
   <div class="container">
     <div  class="row">
       <div class="col" id="categories">
         <h3 id="home-headers">Categories</h3>
         <ul>
         {% for category in categories %}
-          <li><a id="category-name" href="{{url_for('categoryItems', category = category.name)}}">{{category.name}}</a></li>
+          <li><a id="category-name" href="{{url_for('categoryItems', category=category.name)}}">{{category.name}}</a></li>
         {% endfor %}
         </ul>
       </div>
       <div class="col">
-        <h3 id="home-headers"> Lastest Items</h3>
+        <h3 id="home-headers"> {{categoryName}} Items ({{items | length}})</h3>
         <ul>
-        {% for item in lastItems %}
-          <li><a id="latest-items" href="{{url_for('showItem', category=item.category.name, item=item.name)}}">{{item.name}}</a><span id="category-latest">({{item.category.name}})<span></li>
+        {% for item in items %}
+          <li><a id="item-name" href="{{url_for('showItem', category=item.category.name, item=item.name)}}">{{item.name}}</a></li>
         {% endfor %}
         </ul>
       </div>
     </div>
   </div>
+
 {% endblock %}

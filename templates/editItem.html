@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id="edit-container"class="container">
+      <h3>Item Edit</h3>
+      <form id="form-edit" method='post'>
+          <div id="form-title" class="form-group">
+              <label id="title-label" for="title-form">Title</label>
+              <input type="text" name="title" id="title-form" class="form-control" placeholder="title">
+          </div>
+          <div id="form-description" class="form-group">
+              <label id="description-form" for="description">Description</label>
+              <textarea id="description-form" name="description" class="form-control" rows="8" cols="80"></textarea>
+          </div>
+          <div id="form-categories" class="form-group">
+              <label id="form-categories" for="category">Category</label>
+              <select class="custom-select" name="category">
+                {% for category in categories %}
+                <option value="{{category.name}}">{{category.name}}</option>
+                {% endfor %}
+              </select>
+          </div>
+          <button type="submit" class="btn btn-secondary">Submit</button>
+      </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container">
+    <div  class="row">
+      <div class="col" id="categories">
+        <h3 id="home-headers">Categories</h3>
+        <ul>
+        {% for category in categories %}
+          <li><a id="category-name" href="{{url_for('categoryItems', category=category.name, categoryID=category.id)}}">{{category.name}}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="col">
+        <h3 id="item-headers">{{item.name}}</h3>
+        <div id="item-description">{{item.description}}</div>
+        <a id="edit-btn" href="{{url_for('editItem', item=item.name)}}">edit</a> <a id="delete-btn">delete</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
